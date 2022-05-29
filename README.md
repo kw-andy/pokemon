@@ -5,7 +5,7 @@ I've started this project when doing an interview. The project kind of standstil
 
 Yet the project drew attention with some folks out there. 
 
-After giving some thoughts, I've decided to improve it and using oit as a learning process (I'm a fan of Pokemon, so I cannot leave the project that way). 
+After giving some thoughts, I've decided to improve the project and using it as a learning process (I'm a fan of Pokemon, I cannot leave Pika that way!). 
 
 My blue print will be the following 
 
