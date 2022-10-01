@@ -1,38 +1,38 @@
 from statistics import mode
 from django.db import models
 
-# Create your models here.
-
-
 class PokedexCreature(models.Model):
-    """
-    Store toutes les données du CSV fournis
-    dans le modele PokeDexCreature
-    """
+    Poke_id = models.IntegerField()
+    Poke_Name = models.CharField(max_length=255)
+    Type_1 = models.CharField(choices=("cle","valeur"))
+    Type_2 = models.CharField(choices=("cle","valeur"),null=True,blank=True)
+    Total = models.PositiveIntegerField()
+    HP = models.PositiveIntegerField()
+    Attack = models.PositiveIntegerField()
+    Defense = models.PositiveIntegerField()
+    Sp_Atk = models.PositiveIntegerField()
+    Sp_Def = models.PositiveIntegerField()
+    Speed = models.PositiveIntegerField()
+    Generation = models.PositiveIntegerField()
+    Legendary = models.BooleanField()
 
-    Name = models.CharField(max_length=30)
-    Type_1 = models.CharField(max_length=20, db_column="Type 1")
-    Type_2 = models.CharField(max_length=20, db_column="Type 2")
-    Total = models.IntegerField()
-    HP = models.IntegerField()
-    Attack = models.IntegerField()
-    Defense = models.IntegerField()
-    Sp_Atk = models.IntegerField(db_column="Sp. Atk")
-    Sp_Def = models.IntegerField(db_column="Sp. Def")
-    Speed = models.IntegerField()
-    Generation = models.IntegerField()
-    Legendary = models.CharField(max_length=20)
+class Trainer(models.Model):
+    Last_name = models.CharField(max_length=255)
+    First_name = models.CharField(max_length=255)
 
 
 class Pokemon(models.Model):
-    """
-    Un individu fait référence à
-    une entrée du POKEDEX
-    """
+    Pokedex_type = models.ForeignKey(on_delete=models.CASCADE)
+    #question à se poser si l'entraîneur lâche l'affaire, que se passe t'il 
+    #pour le pokemon ? Il redevient sauvage ou il meurt T_T
+    Trainer= models.ForeignKey(null=True,on_delete=models) 
+    Poke_Trainer_Nickname = models.CharField(max_length=255,null=True,blank=True)
+    Level = models.PositiveIntegerField()
+    Experience = models.IntegerField()
+    Amount = models.IntegerField(null=True)
 
-    pokedex_creature_id = models.IntegerField(primary_key=True)
-    trainer_id = models.IntegerField(null=True)
-    surname = models.CharField(max_length=30)
-    level = models.IntegerField()
-    experience = models.IntegerField()
-    amount = models.IntegerField(null=True)
+    @property
+    def Surname(self):
+        return self.Poke_Trainer_Nickname if self.Poke_Trainer_Nickname else self.Pokedex_type.Poke_name
+
+    
