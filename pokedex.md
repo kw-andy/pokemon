@@ -3,8 +3,6 @@
 
 ## BONJOUR !
 
----
-
 
 
 `Un RATTATA sauvage apparaît !`
@@ -19,7 +17,7 @@
 
 ---
 
-[pokemon.csv](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/65b98c95-8b09-4661-be50-7eee57f361d0/pokemon.csv)
+[pokemon.csv](pokemon.csv)
 
 ### POKEDEX
 

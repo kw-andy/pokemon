@@ -16,7 +16,7 @@ My blue print will be the following
 
 # Howto
 
-How to create a model pokedex and a pokemon model. Everything you want to know on how to create the pokedex and the pokemon model, through this [URL](https://wirehaired-moonstone-c71.notion.site/Test-technique-back-end-Pokedex-6d1f91bdbf6643bc87e23722af1176ab)
+How to create a model pokedex and a pokemon model. Everything you want to know on how to create the pokedex and the pokemon model, through this [URL](pokedex.md)
 
 How does the import work?
 
