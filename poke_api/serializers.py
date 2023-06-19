@@ -9,7 +9,7 @@ class PokedexCreatureSerializer(ModelSerializer):
     class Meta:
         model = PokedexCreature
         fields = [
-            "Name",
+            "Poke_Name",
             "Type_1",
             "Type_2",
             "Total",

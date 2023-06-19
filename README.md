@@ -21,11 +21,13 @@ How to create a model pokedex and a pokemon model. Everything you want to know o
 How does the import work?
 
 ````python
+For Linux : 
+./manage.py import --path "/home/Andy/poke.csv"
 
-./manage.py import 
+For Windows :
+python.exe .\manage.py import --path "C:\Users\DELL\Projects\Python\pokemon\poke.csv"
 
-type path of the csv file and csv file name, don't put quotation mark for path
-/home/andykw/projects/python/poke_project/poke_project/poke.csv
+
 
 ````
 

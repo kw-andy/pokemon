@@ -5,17 +5,22 @@ from os import getenv
 from django.core.management.base import BaseCommand, CommandError
 from poke_api.models import PokedexCreature as Pokedex
 
-PATH_VAL = input(
-    "type path of the csv file and csv file name, don't put quotation mark for path\n"
-)
+#PATH_VAL = input(
+#    "type path of the csv file and csv file name, don't put quotation mark for path\n"
+#)
 
 
 class Command(BaseCommand):
     help = "Import the csv data and create instances in the model PokedexCreature"
 
+    def add_arguments(self, parser):
+        parser.add_argument("--path", nargs="+", type=str, default=1)
+
     def handle(self, *args, **options):
         try:
-            with open(PATH_VAL) as csvfile:
+            path_file = options["path"][0]
+            print(path_file)
+            with open(path_file) as csvfile:
                 reader = csv.DictReader(csvfile)
                 print(reader)
                 for line in reader:
@@ -33,7 +38,7 @@ class Command(BaseCommand):
                     Legendary = line["Legendary"]
 
                     with_data_pokedex = Pokedex(
-                        Name=Name,
+                        Poke_Name=Name,
                         Type_1=Type_1,
                         Type_2=Type_2,
                         Total=Total,
