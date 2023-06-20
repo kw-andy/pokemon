@@ -1,46 +1,47 @@
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.viewsets import ReadOnlyModelViewSet
 
-from poke_api.models import PokedexCreature
-from poke_api.models import Pokemon
-from poke_api.serializers import PokedexCreatureSerializer
-from poke_api.serializers import PokemonSerializer
+from poke_api.models import (PokedexCreature, Pokemon)
+from poke_api.serializers import (PokedexCreatureSerializer,
+                                  PokemonSerializer)
 
 
-# Create your views here.
+class PokeCreatureListViewset(ReadOnlyModelViewSet):
+
+    serializer_class = PokedexCreatureSerializer
+    queryset = PokedexCreature.objects.all()
 
 
-class PokeIndexCreatureViewset(ReadOnlyModelViewSet):
+class PokeCreatureByAttribViewset(ReadOnlyModelViewSet):
     """
     pour avoir un filtre, mettre le mot clé de cette façon dans le
-    path : http://127.0.0.1:8000/pokedex/?Generation=1
+    path : http://127.0.0.1:8000/api/pokemon_by_attrib/?Generation=1
     """
-
     serializer_class = PokedexCreatureSerializer
 
     def get_queryset(self):
-        Pokedexqueryset = PokedexCreature.objects.filter()
+        queryset = PokedexCreature.objects.filter()
 
-        Type_1 = self.request.GET.get("Type_1")
-        Type_2 = self.request.GET.get("Type_2")
-        Generation = self.request.GET.get("Generation")
-        Legendary = self.request.GET.get("Legendary")
+        type_1 = self.request.GET.get("Type_1")
+        type_2 = self.request.GET.get("Type_2")
+        generation = self.request.GET.get("Generation")
+        legendary = self.request.GET.get("Legendary")
 
-        if Type_1 is not None:
-            Pokedexqueryset = Pokedexqueryset.filter(Type_1=Type_1)
-        elif Type_2 is not None:
-            Pokedexqueryset = Pokedexqueryset.filter(Type_2=Type_2)
-        elif Generation is not None:
-            Pokedexqueryset = Pokedexqueryset.filter(Generation=Generation)
-        elif Legendary is not None:
-            Pokedexqueryset = Pokedexqueryset.filter(Legendary=Legendary)
+        if type_1 is not None:
+            queryset = queryset.filter(Type_1=type_1)
+        elif type_2 is not None:
+            queryset = queryset.filter(Type_2=type_2)
+        elif generation is not None:
+            queryset = queryset.filter(Generation=generation)
+        elif legendary is not None:
+            queryset = queryset.filter(Legendary=legendary)
 
-        return Pokedexqueryset
+        return queryset
 
 
 class PokemonViewset(ModelViewSet):
     """
-    http://127.0.0.1/pokemon
+    http://127.0.0.1:8000/api/pokemon
     """
 
     serializer_class = PokemonSerializer
