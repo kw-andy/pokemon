@@ -4,6 +4,14 @@ from rest_framework.serializers import ModelSerializer
 from poke_api.models import PokedexCreature
 from poke_api.models import Pokemon
 
+"""
+un "serializer" ça converti des objets Python en un flux (ie, JSON),
+mais ça ne gère que ça, la conversion d'objets Python en un flux, 
+il reste la partie "récupérer les objets Python" 
+avec tout ce que ça peut impliquer de vérifications de droits, filtrages, etc. 
+et ça c'est le rôle de tes vues
+"""
+
 
 class PokedexCreatureSerializer(ModelSerializer):
     class Meta:

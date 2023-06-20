@@ -20,11 +20,13 @@ How to create a model pokedex and a pokemon model. Everything you want to know o
 
 How does the import work?
 
-````python
-For Linux : 
+````bash
+# For Linux : 
 ./manage.py import --path "/home/Andy/poke.csv"
+````
 
-For Windows :
+````powershell
+<# For Windows : #>
 python.exe .\manage.py import --path "C:\Users\DELL\Projects\Python\pokemon\poke.csv"
 
 
@@ -34,25 +36,19 @@ python.exe .\manage.py import --path "C:\Users\DELL\Projects\Python\pokemon\poke
 How to use the pokedex endpoint?
 
 ````
-http://127.0.0.1:8000/pokedex/
+http://127.0.0.1:8000/api/pokemons_list/
 ````
 
-The pokedex endpoint can be filtered by individual
+The pokedex endpoint can be filtered by attributes
 
 ````
-http://127.0.0.1:8000/pokedex/1
-````
-
-How to filter the pokedex with the conditions?
-
-````
-http://127.0.0.1:8000/pokedex/?Generation=1
+http://127.0.0.1:8000/api/pokemon_by_attrib/Generations=1
 ````
 
 
 How to use the pokemon endpoint?
 
 ````
-http://127.0.0.1:8000/pokemon
+http://127.0.0.1:8000/api/pokemon
 
 ````
